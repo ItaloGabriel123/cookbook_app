@@ -118,7 +118,6 @@ fun Hero() {
         )
         Spacer(Modifier.height(20.dp))
 
-        // AsyncImage do Coil carrega imagens pesadas sem travar o celular
         AsyncImage(
             model = R.drawable.banner,
             contentDescription = null,
