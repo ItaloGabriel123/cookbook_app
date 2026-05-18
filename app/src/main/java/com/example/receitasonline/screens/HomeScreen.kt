@@ -24,7 +24,7 @@ import com.example.receitasonline.R
 
 @Composable
 fun HomeScreen() {
-    // Removido o Scaffold interno para evitar duplicidade com a navegação principal
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

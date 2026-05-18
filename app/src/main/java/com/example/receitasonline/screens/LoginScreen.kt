@@ -99,8 +99,6 @@ fun LoginScreen(){
 
         }
 
-
-
         Card(
 
             modifier =
@@ -117,7 +115,6 @@ fun LoginScreen(){
                 RoundedCornerShape(
                     28.dp
                 )
-
         ){
 
             Column(
@@ -126,7 +123,6 @@ fun LoginScreen(){
                     Modifier.padding(
                         24.dp
                     )
-
             ){
 
                 Text(
@@ -138,16 +134,13 @@ fun LoginScreen(){
 
                     fontWeight =
                         FontWeight.Bold
-
                 )
-
 
                 Spacer(
                     Modifier.height(
                         24.dp
                     )
                 )
-
 
                 OutlinedTextField(
 
@@ -165,7 +158,6 @@ fun LoginScreen(){
                         Text(
                             "Email"
                         )
-
                     },
 
                     modifier =
@@ -212,16 +204,13 @@ fun LoginScreen(){
                         RoundedCornerShape(
                             18.dp
                         )
-
                 )
-
 
                 Spacer(
                     Modifier.height(
                         24.dp
                     )
                 )
-
 
                 Button(
 
@@ -234,7 +223,6 @@ fun LoginScreen(){
                         RoundedCornerShape(
                             20.dp
                         )
-
                 ){
 
                     Text(
@@ -242,8 +230,6 @@ fun LoginScreen(){
                     )
 
                 }
-
-
 
                 TextButton(
 
