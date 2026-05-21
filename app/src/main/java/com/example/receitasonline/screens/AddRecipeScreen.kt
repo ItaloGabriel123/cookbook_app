@@ -61,8 +61,6 @@ fun AddRecipeScreen() {
 
         }
 
-
-
         item {
 
             CampoTexto(
@@ -74,7 +72,6 @@ fun AddRecipeScreen() {
 
             }
 
-
             CampoTexto(
                 "Descrição",
                 descricao
@@ -83,7 +80,6 @@ fun AddRecipeScreen() {
                 descricao = it
 
             }
-
 
             CampoTexto(
                 "Categoria",
@@ -94,7 +90,6 @@ fun AddRecipeScreen() {
 
             }
 
-
             CampoTexto(
                 "Ingredientes",
                 ingredientes
@@ -103,7 +98,6 @@ fun AddRecipeScreen() {
                 ingredientes = it
 
             }
-
 
             CampoTexto(
                 "Modo de preparo",
@@ -114,13 +108,11 @@ fun AddRecipeScreen() {
 
             }
 
-
             Spacer(
                 Modifier.height(
                     24.dp
                 )
             )
-
 
             Button(
 
@@ -162,7 +154,7 @@ fun CampoTexto(
     titulo:String,
 
     valor:String,
-
+    
     onValor:(String)->Unit
 
 ){

@@ -58,9 +58,7 @@ fun FavoritesScreen() {
                     Color.Gray
 
             )
-
         }
-
 
         item {
 
@@ -70,7 +68,7 @@ fun FavoritesScreen() {
 
                 "30 min",
 
-                R.drawable.sobremesa
+                R.drawable.macarrao
 
             )
 

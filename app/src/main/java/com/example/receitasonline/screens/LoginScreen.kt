@@ -25,7 +25,6 @@ fun LoginScreen(){
         mutableStateOf("")
     }
 
-
     Column(
 
         modifier =
@@ -58,7 +57,6 @@ fun LoginScreen(){
                         )
 
                     )
-
         ){
 
             Column(
@@ -85,7 +83,6 @@ fun LoginScreen(){
 
                 )
 
-
                 Text(
 
                     "Entre para acessar\nsuas receitas",
@@ -94,9 +91,7 @@ fun LoginScreen(){
                         Color.White
 
                 )
-
             }
-
         }
 
         Card(
@@ -240,13 +235,8 @@ fun LoginScreen(){
                     Text(
                         "Criar conta"
                     )
-
                 }
-
             }
-
         }
-
     }
-
 }
