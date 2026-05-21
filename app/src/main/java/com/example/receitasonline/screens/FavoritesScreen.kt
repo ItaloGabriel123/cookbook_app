@@ -61,38 +61,24 @@ fun FavoritesScreen() {
         }
 
         item {
-
             FavoriteCard(
-
                 "Macarrão Cremoso",
-
                 "30 min",
-
                 R.drawable.macarrao
 
             )
-
         }
 
-
         item {
-
             FavoriteCard(
-
                 "Receita Vegana",
-
                 "20 min",
-
                 R.drawable.vegano
 
             )
-
         }
-
     }
-
 }
-
 
 
 @Composable
