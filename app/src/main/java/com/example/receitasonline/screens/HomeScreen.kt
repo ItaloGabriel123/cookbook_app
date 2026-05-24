@@ -23,13 +23,12 @@ import coil.compose.AsyncImage
 import com.example.receitasonline.R
 
 @Composable
-fun HomeScreen() {
-    // Removido o Scaffold interno para evitar duplicidade com a navegação principal
+fun HomeScreen(){
     LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
+        modifier =
+            Modifier.fillMaxSize()
+    ){
+
         item {
             Header()
             Hero()
@@ -37,22 +36,28 @@ fun HomeScreen() {
 
             Titulo(
                 "Explore por Categorias",
-                "Encontre receitas organizadas por temas"
+                "Encontre receitas organizadas"
             )
 
-            CategoriaCard(
-                "Receitas de Airfryer",
-                "Pratos preparados na fritadeira",
-                R.drawable.airfryer,
-                "🔥"
-            )
+            Row(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                horizontalArrangement =
+                    Arrangement.spacedBy(12.dp)
+            ){
 
-            CategoriaCard(
-                "Molhos e Acompanhamentos",
-                "Complementos perfeitos",
-                R.drawable.molhos,
-                "💧"
-            )
+                CategoriaMini(
+                    "Airfryer",
+                    R.drawable.airfryer
+                )
+
+                CategoriaMini(
+                    "Molhos",
+                    R.drawable.molhos
+                )
+            }
 
             Titulo(
                 "Receitas em Destaque",
@@ -63,170 +68,331 @@ fun HomeScreen() {
                 R.drawable.airfryer
             )
 
+            Titulo(
+                "Receitas por Humor",
+                "Escolha conforme seu momento"
+            )
+
             Humor()
+
+            Titulo(
+                "Receitas por Objetivo",
+                "Receitas personalizadas"
+            )
+
             Objetivos()
             CTAFinal()
+            Spacer(
 
-            Spacer(Modifier.height(40.dp))
-        }
-    }
-}
-
-@Composable
-fun Header() {
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            "🍳 CookBook",
-            fontWeight = FontWeight.Bold,
-            fontSize = 28.sp
-        )
-        Row {
-            Icon(Icons.Outlined.Search, null)
-            Spacer(Modifier.width(18.dp))
-            Icon(Icons.Outlined.Menu, null)
-        }
-    }
-}
-
-@Composable
-fun Hero() {
-    Column(
-        Modifier
-            .background(
-                Brush.horizontalGradient(
-                    listOf(Color(0xFFFF7300), Color(0xFFFF3355))
+                Modifier.height(
+                    120.dp
                 )
             )
-            .padding(20.dp)
-    ) {
-        Text(
-            "Descubra Receitas Incríveis",
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 34.sp
-        )
-        Spacer(Modifier.height(12.dp))
-        Text(
-            "Explore milhares de receitas",
-            color = Color.White
-        )
-        Spacer(Modifier.height(20.dp))
+        }
+    }
+}
 
-        // AsyncImage do Coil carrega imagens pesadas sem travar o celular
-        AsyncImage(
-            model = R.drawable.banner,
-            contentDescription = null,
-            modifier = Modifier
+@Composable
+fun Header(){
+
+    Row(
+        modifier =
+            Modifier
                 .fillMaxWidth()
-                .height(180.dp)
-                .clip(RoundedCornerShape(22.dp)),
-            contentScale = ContentScale.Crop
+                .padding(
+                    horizontal = 20.dp,
+                    vertical = 26.dp
+                ),
+
+        horizontalArrangement =
+            Arrangement.SpaceBetween,
+
+        verticalAlignment =
+            Alignment.CenterVertically
+
+    ){
+
+        Text(
+            "🍳 CookBook",
+            fontWeight =
+                FontWeight.Bold,
+            fontSize =
+                30.sp
         )
 
-        Spacer(Modifier.height(18.dp))
+        Row {
+
+            Icon(
+                Icons.Outlined.Search,
+                null,
+                modifier =
+                    Modifier.size(22.dp)
+            )
+
+            Spacer(
+                Modifier.width(20.dp)
+            )
+
+            Icon(
+                Icons.Outlined.Menu,
+                null,
+                modifier =
+                    Modifier.size(22.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun Hero(){
+
+    Column(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(
+
+                    Brush.horizontalGradient(
+
+                        listOf(
+                            Color(0xFFFF7A18),
+                            Color(0xFFFF4E50)
+
+                        )
+                    )
+                )
+                .padding(
+                    horizontal = 28.dp,
+                    vertical = 24.dp
+                )
+    ){
+
+        OutlinedTextField(
+
+            value = "",
+            onValueChange = {},
+            placeholder = {
+
+                Text(
+                    "Pesquisar receitas..."
+                )
+            },
+
+            shape =
+                RoundedCornerShape(
+                    30.dp
+                ),
+
+            modifier =
+                Modifier.fillMaxWidth(),
+
+            colors =
+                OutlinedTextFieldDefaults.colors(
+
+                    unfocusedContainerColor =
+                        Color.White,
+                    focusedContainerColor =
+                        Color.White,
+                    focusedBorderColor =
+                        Color.Transparent,
+                    unfocusedBorderColor =
+                        Color.Transparent
+
+                )
+        )
+
+        Spacer(
+            Modifier.height(30.dp)
+        )
+
+        Text(
+            "Descubra Receitas\nIncríveis",
+            color =
+                Color.White,
+            fontWeight =
+                FontWeight.Bold,
+            fontSize =
+                40.sp,
+            lineHeight =
+                40.sp
+        )
+
+        Spacer(
+            Modifier.height(12.dp)
+        )
+
+        Text(
+            "Explore milhares de receitas,\ncompartilhe experiências",
+            color =
+                Color.White,
+            fontSize =
+                17.sp
+        )
+
+        Spacer(
+            Modifier.height(24.dp)
+        )
+
+        AsyncImage(
+            model =
+                R.drawable.banner,
+            contentDescription =
+                null,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(180.dp)
+                    .clip(
+                        RoundedCornerShape(
+                            24.dp
+                        )
+                    ),
+
+            contentScale =
+                ContentScale.Crop
+        )
+
+        Spacer(
+            Modifier.height(24.dp)
+        )
 
         Button(
             onClick = {},
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
-            )
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(54.dp),
+            shape =
+                RoundedCornerShape(50.dp),
+            colors =
+                ButtonDefaults.buttonColors(
+                    containerColor =
+                        Color(0xFFFF8A00)
+                )
         ) {
-            Text("Explorar Receitas")
+
+            Text(
+                "Explorar Receitas",
+                fontSize =
+                    18.sp
+            )
         }
     }
 }
 
 @Composable
-fun Beneficios() {
+fun Beneficios(){
+
     Column {
-        Beneficio("❤", "Comunidade Ativa")
-        Beneficio("🧠", "IA Inteligente")
-        Beneficio("✨", "Dicas de Saúde")
-    }
-}
 
-@Composable
-fun Beneficio(emoji: String, titulo: String) {
-    Row(
-        Modifier.padding(20.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(
-            Modifier
-                .size(60.dp)
-                .background(Color(0xFFFDECD5), CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(emoji, fontSize = 20.sp)
-        }
-        Spacer(Modifier.width(20.dp))
-        Text(
-            titulo,
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
+        Beneficio(
+            "❤",
+            "Comunidade Ativa"
+
+        )
+
+        Beneficio(
+            "🧠",
+            "IA Inteligente"
+        )
+
+        Beneficio(
+            "✨",
+            "Saúde"
         )
     }
 }
-
 @Composable
-fun Titulo(titulo: String, sub: String) {
-    Column(Modifier.padding(20.dp)) {
-        Text(
-            titulo,
-            fontWeight = FontWeight.Bold,
-            fontSize = 30.sp
-        )
-        Text(sub, color = Color.Gray)
-    }
-}
+fun Beneficio(
+    emoji:String,
+    titulo:String
+){
 
-@Composable
-fun CategoriaCard(titulo: String, desc: String, img: Int, emoji: String) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp)
-            .height(220.dp),
-        shape = RoundedCornerShape(24.dp)
-    ) {
-        Box {
-            AsyncImage(
-                model = img,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(
+                    horizontal = 20.dp,
+                    vertical = 10.dp
+                ),
+
+        shape =
+            RoundedCornerShape(22.dp),
+
+        colors =
+            CardDefaults.cardColors(
+                containerColor =
+                    Color(0xFFFFF7F1)
+
             )
+    ){
+
+        Row(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(18.dp),
+            verticalAlignment =
+                Alignment.CenterVertically
+
+        ){
 
             Box(
-                Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(0.45f))
+                modifier =
+                    Modifier
+                        .size(64.dp)
+                        .background(
+                            Color.White,
+                            CircleShape
+                        ),
+
+                contentAlignment =
+                    Alignment.Center
+            ){
+
+                Text(
+                    emoji,
+                    fontSize =
+                        28.sp
+                )
+            }
+            Spacer(
+                Modifier.width(18.dp)
             )
 
-            Column(
-                Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(emoji, fontSize = 28.sp)
-                Spacer(Modifier.height(12.dp))
+            Column {
+
                 Text(
                     titulo,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 28.sp
+                    fontWeight =
+                        FontWeight.Bold,
+                    fontSize =
+                        20.sp
                 )
+
+                Spacer(
+                    Modifier.height(6.dp)
+                )
+
                 Text(
-                    desc,
-                    color = Color.White
+                    when(titulo){
+                        "Comunidade Ativa" ->
+                            "Compartilhe receitas"
+
+                        "IA Inteligente" ->
+                            "Sugestões personalizadas"
+
+                        else ->
+                            "Dicas alimentares"
+                    },
+
+                    color =
+                        Color.Gray,
+                    fontSize =
+                        13.sp,
+                    lineHeight =
+                        16.sp
                 )
             }
         }
@@ -234,58 +400,449 @@ fun CategoriaCard(titulo: String, desc: String, img: Int, emoji: String) {
 }
 
 @Composable
-fun ReceitaGrande(img: Int) {
-    AsyncImage(
-        model = img,
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(280.dp)
-            .padding(horizontal = 20.dp)
-            .clip(RoundedCornerShape(24.dp)),
-        contentScale = ContentScale.Crop
-    )
-}
+fun Titulo(
+    titulo:String,
+    sub:String
+){
 
-@Composable
-fun Humor() {
-    Titulo("Receitas por Humor", "Escolha conforme o momento")
-}
-
-@Composable
-fun Objetivos() {
-    Titulo("Receitas por Objetivos", "Receitas personalizadas")
-}
-
-@Composable
-fun CTAFinal() {
     Column(
-        Modifier
-            .fillMaxWidth()
-            .background(
-                Brush.horizontalGradient(
-                    listOf(Color(0xFFFF7300), Color(0xFFFF3355))
-                )
-            )
-            .padding(30.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+        Modifier.padding(20.dp)
+
+    ){
+
         Text(
-            "Pronto para Compartilhar?",
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 30.sp
+            titulo,
+            fontWeight =
+                FontWeight.Bold,
+            fontSize =
+                30.sp
         )
-        Spacer(Modifier.height(16.dp))
+
+        Text(sub)
+    }
+}
+
+@Composable
+fun CategoriaMini(
+    titulo:String,
+    imagem:Int
+){
+
+    Card(
+        modifier =
+            Modifier
+                .width(170.dp)
+                .height(200.dp),
+        shape =
+            RoundedCornerShape(
+                24.dp
+            )
+    ){
+
+        Box {
+
+            AsyncImage(
+                model =
+                    imagem,
+                contentDescription =
+                    null,
+                modifier =
+                    Modifier.fillMaxSize(),
+                contentScale =
+                    ContentScale.Crop
+            )
+
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(
+                        Color.Black.copy(
+                            alpha = 0.45f
+                        )
+                    )
+            )
+
+            Column(
+                modifier =
+                    Modifier.align(
+                        Alignment.Center
+                    ),
+
+                horizontalAlignment =
+                    Alignment.CenterHorizontally
+            ){
+
+                Text(
+                    "🍽",
+                    fontSize =
+                        28.sp
+                )
+
+                Spacer(
+                    Modifier.height(
+                        10.dp
+                    )
+                )
+
+                Text(
+                    titulo,
+                    color =
+                        Color.White,
+                    fontWeight =
+                        FontWeight.Bold,
+                    fontSize =
+                        22.sp
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ReceitaGrande(
+    imagem:Int
+){
+
+    Card(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(
+                    horizontal = 20.dp
+                ),
+
+        shape =
+            RoundedCornerShape(
+                24.dp
+            )
+    ){
+
+        Column {
+
+            AsyncImage(
+                model =
+                    imagem,
+                contentDescription =
+                    null,
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(
+                            260.dp
+                        ),
+
+                contentScale =
+                    ContentScale.Crop
+
+            )
+
+            Column(
+
+                Modifier.padding(
+                    18.dp
+                )
+            ){
+
+                Text(
+                    "Receitas em Destaque",
+                    fontWeight =
+                        FontWeight.Bold,
+                    fontSize =
+                        24.sp
+                )
+
+                Spacer(
+                    Modifier.height(
+                        10.dp
+                    )
+                )
+
+                Text(
+                    "As mais populares da comunidade",
+                    color =
+                        Color.Gray
+                )
+
+                Spacer(
+                    Modifier.height(
+                        18.dp
+                    )
+                )
+
+                Button(
+                    onClick = {},
+                    modifier =
+                        Modifier.fillMaxWidth(),
+                    shape =
+                        RoundedCornerShape(50.dp)
+                ){
+
+                    Text(
+                        "Ver Todas →",
+                        fontSize =
+                            16.sp
+
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Humor(){
+
+    Column(
+        modifier =
+            Modifier.padding(
+                horizontal = 20.dp
+            )
+    ){
+
+        Row(
+            horizontalArrangement =
+                Arrangement.spacedBy(12.dp)
+        ){
+
+            HumorCard(
+                "😊",
+                "Feliz"
+            )
+
+            HumorCard(
+                "😴",
+                "Cansado"
+            )
+        }
+
+        Spacer(
+            Modifier.height(12.dp)
+        )
+
+        Row(
+            horizontalArrangement =
+                Arrangement.spacedBy(12.dp)
+        ){
+
+            HumorCard(
+                "🔥",
+                "Animado"
+            )
+
+            HumorCard(
+                "🤒",
+                "Leve"
+            )
+        }
+    }
+}
+
+@Composable
+fun HumorCard(
+    emoji:String,
+    texto:String
+){
+
+    Card(
+        modifier =
+            Modifier
+                .width(160.dp)
+                .height(130.dp),
+        shape =
+            RoundedCornerShape(
+                22.dp
+            ),
+        colors =
+            CardDefaults.cardColors(
+                containerColor =
+                    Color(0xFFFFF7FB)
+            )
+    ){
+
+        Column(
+            modifier =
+                Modifier.fillMaxSize(),
+            verticalArrangement =
+                Arrangement.Center,
+            horizontalAlignment =
+                Alignment.CenterHorizontally
+        ){
+
+            Text(
+                emoji,
+                fontSize = 30.sp
+            )
+
+            Text(
+                texto
+            )
+        }
+    }
+}
+
+@Composable
+fun Objetivos(){
+
+    Column(
+        modifier =
+            Modifier.padding(
+                horizontal = 20.dp
+            )
+    ){
+
+        Row(
+            horizontalArrangement =
+                Arrangement.spacedBy(
+                    12.dp
+                )
+        ){
+
+            ObjetivoCard(
+                "⬇",
+                "Emagrecer"
+            )
+
+            ObjetivoCard(
+                "⬆",
+                "Ganhar Peso"
+            )
+        }
+
+        Spacer(
+            Modifier.height(12.dp)
+        )
+
+        Row(
+            horizontalArrangement =
+                Arrangement.spacedBy(
+                    12.dp
+                )
+        ){
+
+            ObjetivoCard(
+                "🍎",
+                "Saudável"
+            )
+
+            ObjetivoCard(
+                "⏱",
+                "Rápido"
+            )
+        }
+    }
+}
+
+@Composable
+fun ObjetivoCard(
+    emoji:String,
+    titulo:String
+){
+
+    Card(
+        modifier =
+            Modifier
+                .width(165.dp)
+                .height(140.dp),
+        shape =
+            RoundedCornerShape(
+                24.dp
+            ),
+        colors =
+            CardDefaults.cardColors(
+                containerColor =
+                    Color(0xFFFFF7F1)
+            )
+    ){
+
+        Column(
+            modifier =
+                Modifier.fillMaxSize(),
+            verticalArrangement =
+                Arrangement.Center,
+            horizontalAlignment =
+                Alignment.CenterHorizontally
+        ){
+
+            Text(
+                emoji,
+                fontSize =
+                    34.sp
+            )
+
+            Text(
+                titulo,
+                fontWeight =
+                    FontWeight.Bold,
+                fontSize =
+                    16.sp
+            )
+        }
+    }
+}
+
+@Composable
+fun CTAFinal(){
+
+    Column(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            Color(0xFFFF7A18),
+                            Color.Red
+                        )
+                    )
+                )
+                .padding(
+                    horizontal = 24.dp,
+                    vertical = 40.dp
+                ),
+
+        horizontalAlignment =
+            Alignment.CenterHorizontally
+    ){
+
+        Text(
+            "Pronto para\nCompartilhar?",
+            color =
+                Color.White,
+            fontWeight =
+                FontWeight.Bold,
+            fontSize =
+                34.sp,
+            lineHeight =
+                38.sp
+        )
+
+        Spacer(
+            Modifier.height(18.dp)
+        )
+
         Button(
             onClick = {},
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
+            modifier =
+                Modifier.fillMaxWidth(),
+            shape =
+                RoundedCornerShape(
+                    50.dp
+                ),
+
+            colors =
+                ButtonDefaults.buttonColors(
+                    containerColor =
+                        Color.White
+                )
+        ){
+
+            Text(
+                "Adicionar Minha Receita",
+                color =
+                    Color(0xFFFF7A18),
+                fontWeight =
+                    FontWeight.Bold
             )
-        ) {
-            Text("Adicionar Minha Receita")
         }
     }
 }

@@ -13,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
 fun LoginScreen(){
 
@@ -25,16 +24,12 @@ fun LoginScreen(){
         mutableStateOf("")
     }
 
-
     Column(
-
         modifier =
             Modifier.fillMaxSize()
-
     ){
 
         Box(
-
             modifier =
                 Modifier
                     .fillMaxWidth()
@@ -42,67 +37,44 @@ fun LoginScreen(){
                         260.dp
                     )
                     .background(
-
                         Brush.horizontalGradient(
-
                             listOf(
-
                                 Color(
                                     0xFFFF7A18
                                 ),
 
                                 Color.Red
-
                             )
-
                         )
-
                     )
-
         ){
 
             Column(
-
                 modifier =
                     Modifier.padding(
                         30.dp
                     )
-
             ){
 
                 Text(
-
                     "Bem-vindo",
-
                     color =
                         Color.White,
-
                     fontSize =
                         42.sp,
-
                     fontWeight =
                         FontWeight.Bold
-
                 )
-
 
                 Text(
-
                     "Entre para acessar\nsuas receitas",
-
                     color =
                         Color.White
-
                 )
-
             }
-
         }
 
-
-
         Card(
-
             modifier =
                 Modifier
                     .fillMaxWidth()
@@ -112,35 +84,26 @@ fun LoginScreen(){
                     .padding(
                         20.dp
                     ),
-
             shape =
                 RoundedCornerShape(
                     28.dp
                 )
-
         ){
 
             Column(
-
                 modifier =
                     Modifier.padding(
                         24.dp
                     )
-
             ){
 
                 Text(
-
                     "Login",
-
                     fontSize =
                         32.sp,
-
                     fontWeight =
                         FontWeight.Bold
-
                 )
-
 
                 Spacer(
                     Modifier.height(
@@ -148,36 +111,26 @@ fun LoginScreen(){
                     )
                 )
 
-
                 OutlinedTextField(
-
                     value =
                         email,
-
                     onValueChange = {
-
                         email = it
-
                     },
 
                     label = {
-
                         Text(
                             "Email"
                         )
-
                     },
 
                     modifier =
                         Modifier.fillMaxWidth(),
-
                     shape =
                         RoundedCornerShape(
                             18.dp
                         )
-
                 )
-
 
                 Spacer(
                     Modifier.height(
@@ -185,16 +138,11 @@ fun LoginScreen(){
                     )
                 )
 
-
                 OutlinedTextField(
-
                     value =
                         senha,
-
                     onValueChange = {
-
                         senha = it
-
                     },
 
                     label = {
@@ -202,19 +150,15 @@ fun LoginScreen(){
                         Text(
                             "Senha"
                         )
-
                     },
 
                     modifier =
                         Modifier.fillMaxWidth(),
-
                     shape =
                         RoundedCornerShape(
                             18.dp
                         )
-
                 )
-
 
                 Spacer(
                     Modifier.height(
@@ -222,45 +166,30 @@ fun LoginScreen(){
                     )
                 )
 
-
                 Button(
-
                     onClick = {},
-
                     modifier =
                         Modifier.fillMaxWidth(),
-
                     shape =
                         RoundedCornerShape(
                             20.dp
                         )
-
                 ){
 
                     Text(
                         "Entrar"
                     )
-
                 }
 
-
-
                 TextButton(
-
                     onClick = {}
-
                 ){
 
                     Text(
                         "Criar conta"
                     )
-
                 }
-
             }
-
         }
-
     }
-
 }

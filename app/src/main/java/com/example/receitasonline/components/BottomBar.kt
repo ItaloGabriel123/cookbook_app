@@ -5,14 +5,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-
 
 @Composable
 fun BottomBar(
@@ -22,94 +24,119 @@ fun BottomBar(
 ){
 
     Box(
-
         modifier =
             Modifier
                 .fillMaxWidth()
                 .padding(
-                    bottom = 50.dp,
-                    start = 20.dp,
-                    end = 20.dp
+                    bottom = 70.dp,
+                    start = 22.dp,
+                    end = 22.dp
                 ),
 
         contentAlignment =
             Alignment.Center
-
     ){
 
         Card(
-
             shape =
                 RoundedCornerShape(
-                    40.dp
-                )
+                    34.dp
+                ),
 
+            elevation =
+                CardDefaults.cardElevation(
+                    10.dp
+                ),
+
+            colors =
+                CardDefaults.cardColors(
+
+                    containerColor =
+                        Color.White
+                )
         ){
 
             Row(
-
                 modifier =
                     Modifier
                         .fillMaxWidth()
                         .padding(
-                            18.dp
+                            vertical = 18.dp,
+                            horizontal = 8.dp
                         ),
 
                 horizontalArrangement =
                     Arrangement.SpaceEvenly
-
             ){
 
-                Item("🏠"){
+                Item(
+                    "🏠",
+                    "Home"
+                ){
                     nav.navigate("home")
                 }
 
-                Item("❤️"){
+                Item(
+                    "❤️",
+                    "Favoritos"
+                ){
                     nav.navigate("favoritos")
                 }
 
-                Item("➕"){
+                Item(
+                    "➕",
+                    "Adicionar"
+                ){
                     nav.navigate("add")
                 }
 
-                Item("👤"){
+                Item(
+                    "👤",
+                    "Perfil"
+                ){
                     nav.navigate("login")
                 }
-
             }
-
         }
-
     }
-
 }
-
-
 
 @Composable
 fun Item(
-
     emoji:String,
-
+    texto:String,
     clique:()->Unit
-
 ){
 
-    Text(
-
-        text =
-            emoji,
-
-        fontSize =
-            28.sp,
-
+    Column(
+        horizontalAlignment =
+            Alignment.CenterHorizontally,
         modifier =
             Modifier.clickable {
 
                 clique()
-
             }
+    ){
 
-    )
+        Text(
+            text =
+                emoji,
+            fontSize =
+                24.sp
 
+        )
+
+        Spacer(
+            Modifier.height(4.dp)
+        )
+
+        Text(
+            text =
+                texto,
+            fontSize =
+                11.sp,
+            fontWeight =
+                FontWeight.Medium
+        )
+    }
 }

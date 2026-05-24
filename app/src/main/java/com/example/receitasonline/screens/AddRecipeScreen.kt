@@ -10,10 +10,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
 fun AddRecipeScreen() {
-
     var titulo by remember {
         mutableStateOf("")
     }
@@ -34,84 +32,59 @@ fun AddRecipeScreen() {
         mutableStateOf("")
     }
 
-
     LazyColumn(
-
         modifier =
             Modifier.fillMaxSize()
-
     ) {
-
         item {
-
             Text(
-
                 "Adicionar Receita",
-
                 fontSize =
                     34.sp,
-
                 fontWeight =
                     FontWeight.Bold,
-
                 modifier =
                     Modifier.padding(20.dp)
-
             )
-
         }
 
-
-
         item {
-
             CampoTexto(
                 "Título",
                 titulo
             ) {
-
                 titulo = it
-
             }
-
 
             CampoTexto(
                 "Descrição",
                 descricao
             ) {
-
                 descricao = it
 
             }
-
 
             CampoTexto(
                 "Categoria",
                 categoria
             ) {
-
                 categoria = it
 
             }
-
 
             CampoTexto(
                 "Ingredientes",
                 ingredientes
             ) {
-
                 ingredientes = it
 
             }
-
 
             CampoTexto(
                 "Modo de preparo",
                 preparo
             ) {
-
                 preparo = it
-
             }
 
 
@@ -121,66 +94,44 @@ fun AddRecipeScreen() {
                 )
             )
 
-
             Button(
-
                 onClick = {},
-
                 modifier =
                     Modifier
                         .fillMaxWidth()
                         .padding(
                             20.dp
                         ),
-
                 shape =
                     RoundedCornerShape(
                         20.dp
                     )
-
             ) {
 
                 Text(
-
                     "Publicar Receita"
-
                 )
-
             }
-
         }
-
     }
-
 }
-
-
 
 @Composable
 fun CampoTexto(
-
     titulo:String,
-
     valor:String,
-
     onValor:(String)->Unit
-
 ){
 
     OutlinedTextField(
-
         value =
             valor,
-
         onValueChange =
             onValor,
-
         label = {
-
             Text(
                 titulo
             )
-
         },
 
         modifier =
@@ -190,7 +141,5 @@ fun CampoTexto(
                     20.dp,
                     8.dp
                 )
-
     )
-
 }
