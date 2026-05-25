@@ -111,7 +111,7 @@ fun FavoritesScreen() {
 
         item {
             FavoriteCard(
-                "Sobremesa Especial",
+                "Macarrão Cremoso",
                 "15 min",
                 R.drawable.macarrao
             )
