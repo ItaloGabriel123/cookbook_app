@@ -24,6 +24,10 @@ fun LoginScreen(){
         mutableStateOf("")
     }
 
+    var tipoLogin by remember {
+        mutableStateOf("usuario")
+    }
+
     Column(
         modifier =
             Modifier.fillMaxSize()
@@ -67,9 +71,15 @@ fun LoginScreen(){
                 )
 
                 Text(
-                    "Entre para acessar\nsuas receitas",
+
+                    if(tipoLogin == "usuario")
+                        "Entre para acessar\nsuas receitas"
+                    else
+                        "Área exclusiva para\nnutricionistas",
+
                     color =
                         Color.White
+
                 )
             }
         }
@@ -106,10 +116,58 @@ fun LoginScreen(){
                 )
 
                 Spacer(
-                    Modifier.height(
-                        24.dp
-                    )
+                    Modifier.height(16.dp)
                 )
+
+                Row(
+
+                    modifier =
+                        Modifier.fillMaxWidth(),
+
+                    horizontalArrangement =
+                        Arrangement.spacedBy(8.dp)
+
+                ){
+
+                    FilterChip(
+
+                        selected =
+                            tipoLogin == "usuario",
+
+                        onClick = {
+
+                            tipoLogin = "usuario"
+
+                        },
+
+                        label = {
+
+                            Text("👤 Usuário")
+
+                        }
+
+                    )
+
+                    FilterChip(
+
+                        selected =
+                            tipoLogin == "nutricionista",
+
+                        onClick = {
+
+                            tipoLogin = "nutricionista"
+
+                        },
+
+                        label = {
+
+                            Text("🩺 Nutricionista")
+
+                        }
+
+                    )
+
+                }
 
                 OutlinedTextField(
                     value =
@@ -177,7 +235,12 @@ fun LoginScreen(){
                 ){
 
                     Text(
-                        "Entrar"
+
+                        if(tipoLogin == "usuario")
+                            "Entrar"
+                        else
+                            "Entrar como Nutricionista"
+
                     )
                 }
 
@@ -188,6 +251,63 @@ fun LoginScreen(){
                     Text(
                         "Criar conta"
                     )
+                }
+
+                HorizontalDivider(
+
+                    modifier =
+                        Modifier.padding(
+                            vertical = 16.dp
+                        )
+
+                )
+
+                Card(
+
+                    colors =
+                        CardDefaults.cardColors(
+
+                            containerColor =
+                                Color(0xFFFFF7F1)
+
+                        )
+
+                ){
+
+                    Column(
+
+                        modifier =
+                            Modifier.padding(16.dp)
+
+                    ){
+
+                        Text(
+
+                            "🩺 Área Profissional",
+
+                            fontWeight =
+                                FontWeight.Bold
+
+                        )
+
+                        Spacer(
+                            Modifier.height(6.dp)
+                        )
+
+                        Text(
+
+                            "Nutricionistas podem acompanhar pacientes e compartilhar planos alimentares.",
+
+                            fontSize =
+                                13.sp,
+
+                            color =
+                                Color.Gray
+
+                        )
+
+                    }
+
                 }
             }
         }

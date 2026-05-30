@@ -21,9 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.receitasonline.R
+import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    nav: NavController
+){
     LazyColumn(
         modifier =
             Modifier.fillMaxSize()
@@ -65,7 +68,9 @@ fun HomeScreen(){
             )
 
             ReceitaGrande(
-                R.drawable.airfryer
+
+                imagem = R.drawable.airfryer,
+
             )
 
             Titulo(
@@ -81,6 +86,14 @@ fun HomeScreen(){
             )
 
             Objetivos()
+
+            Titulo(
+                "Receitas para Você",
+                "Selecionadas especialmente"
+            )
+
+            ReceitasParaVoce(nav)
+
             CTAFinal()
             Spacer(
 
@@ -779,6 +792,133 @@ fun ObjetivoCard(
         }
     }
 }
+
+@Composable
+fun ReceitasParaVoce(
+    nav: NavController
+){
+
+    Column {
+
+        ReceitaPequena(
+            "Frango na Airfryer",
+            "25 min",
+            R.drawable.airfryer,
+            "receita_airfryer",
+            nav
+        )
+
+        ReceitaPequena(
+            "Sobremesa Especial",
+            "15 min",
+            R.drawable.sobremesa,
+            "receita_sobremesa",
+            nav
+        )
+
+        ReceitaPequena(
+            "Prato Vegano",
+            "20 min",
+            R.drawable.vegano,
+            "receita_vegana",
+            nav
+        )
+    }
+}
+
+@Composable
+fun ReceitaPequena(
+    titulo:String,
+    tempo:String,
+    imagem:Int,
+    rota:String,
+    nav: NavController
+){
+
+    Card(
+
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(
+                    horizontal = 20.dp,
+                    vertical = 10.dp
+                ),
+
+        shape =
+            RoundedCornerShape(24.dp),
+
+        colors =
+            CardDefaults.cardColors(
+
+                containerColor =
+                    Color(0xFFFFF7F1)
+
+            )
+    ){
+
+        Column {
+
+            AsyncImage(
+                model =
+                    imagem,
+                contentDescription =
+                    null,
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(180.dp),
+                contentScale =
+                    ContentScale.Crop
+            )
+
+            Column(
+                modifier =
+                    Modifier.padding(18.dp)
+
+            ) {
+
+                Text(
+                    titulo,
+                    fontWeight =
+                        FontWeight.Bold,
+                    fontSize =
+                        22.sp
+
+                )
+
+                Spacer(
+                    Modifier.height(6.dp)
+                )
+
+                Text(
+                    "Tempo: $tempo",
+                    color =
+                        Color.Gray
+                )
+                Spacer(
+                    Modifier.height(16.dp)
+                )
+
+                Button(
+                    onClick = {
+                        nav.navigate(rota)
+                    },
+                    modifier =
+                        Modifier.fillMaxWidth(),
+                    shape =
+                        RoundedCornerShape(50.dp)
+                ){
+
+                    Text(
+                        "Ver Receita"
+                    )
+                }
+            }
+        }
+    }
+}
+
 
 @Composable
 fun CTAFinal(){
