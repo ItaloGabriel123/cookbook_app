@@ -18,9 +18,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun BottomBar(
-
     nav: NavController
-
 ){
 
     Box(
@@ -123,7 +121,6 @@ fun Item(
                 emoji,
             fontSize =
                 24.sp
-
         )
 
         Spacer(

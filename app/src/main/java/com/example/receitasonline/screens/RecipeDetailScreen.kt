@@ -17,32 +17,23 @@ import androidx.navigation.NavController
 
 @Composable
 fun RecipeDetailScreen(
-
     nav: NavController,
-
     titulo:String,
     tempo:String,
     descricao:String,
     imagem:Int,
     ingredientes:List<String>,
     preparo:List<String>
-
 ){
 
     LazyColumn(
-
         modifier =
             Modifier.fillMaxSize()
-
     ){
         item {
-
             TextButton(
-
                 onClick = {
-
                     nav.popBackStack()
-
                 },
 
                 modifier =
@@ -51,33 +42,23 @@ fun RecipeDetailScreen(
                         top = 8.dp
                     )
             ){
-
                 Text("← Voltar")
-
             }
-
         }
 
         item {
-
             AsyncImage(
-
                 model =
                     imagem,
-
                 contentDescription =
                     null,
-
                 modifier =
                     Modifier
                         .fillMaxWidth()
                         .height(260.dp),
-
                 contentScale =
                     ContentScale.Crop
-
             )
-
         }
 
         item {
@@ -156,15 +137,11 @@ fun RecipeDetailScreen(
                 )
 
                 Text(
-
                     "Modo de Preparo",
-
                     fontSize =
                         24.sp,
-
                     fontWeight =
                         FontWeight.Bold
-
                 )
 
                 Spacer(
@@ -172,9 +149,7 @@ fun RecipeDetailScreen(
                 )
 
                 preparo.forEachIndexed { index, passo ->
-
                     Text("${index + 1}. $passo")
-
                 }
 
                 Spacer(

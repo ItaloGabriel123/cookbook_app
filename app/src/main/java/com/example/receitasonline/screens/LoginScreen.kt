@@ -12,9 +12,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(
+    nav: NavController
+){
 
     var email by remember {
         mutableStateOf("")
@@ -245,12 +248,11 @@ fun LoginScreen(){
                 }
 
                 TextButton(
-                    onClick = {}
+                    onClick = {
+                        nav.navigate("register")
+                    }
                 ){
-
-                    Text(
-                        "Criar conta"
-                    )
+                    Text("Criar conta")
                 }
 
                 HorizontalDivider(

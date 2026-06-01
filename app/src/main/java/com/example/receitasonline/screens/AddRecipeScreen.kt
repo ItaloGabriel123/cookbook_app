@@ -272,45 +272,33 @@ fun AddRecipeScreen() {
                                     horizontal = 20.dp,
                                     vertical = 8.dp
                                 )
-
                     )
 
                     Text(
-
                         "Dificuldade",
-
                         fontWeight =
                             FontWeight.Bold,
-
                         fontSize =
                             18.sp,
-
                         modifier =
                             Modifier.padding(
-
                                 start = 20.dp,
                                 top = 16.dp,
                                 bottom = 8.dp
-
                             )
-
                     )
 
                     Row(
 
                         modifier =
                             Modifier.padding(horizontal = 20.dp),
-
                         horizontalArrangement =
                             Arrangement.spacedBy(8.dp)
-
                     ){
 
                         FilterChip(
-
                             selected =
                                 dificuldade == "Fácil",
-
                             onClick = {
                                 dificuldade = "Fácil"
                             },
@@ -318,14 +306,11 @@ fun AddRecipeScreen() {
                             label = {
                                 Text("Fácil")
                             }
-
                         )
 
                         FilterChip(
-
                             selected =
                                 dificuldade == "Médio",
-
                             onClick = {
                                 dificuldade = "Médio"
                             },
@@ -333,14 +318,11 @@ fun AddRecipeScreen() {
                             label = {
                                 Text("Médio")
                             }
-
                         )
 
                         FilterChip(
-
                             selected =
                                 dificuldade == "Difícil",
-
                             onClick = {
                                 dificuldade = "Difícil"
                             },
@@ -348,9 +330,7 @@ fun AddRecipeScreen() {
                             label = {
                                 Text("Difícil")
                             }
-
                         )
-
                     }
 
                     Spacer(
@@ -358,43 +338,30 @@ fun AddRecipeScreen() {
                     )
 
                     Text(
-
                         "Ingredientes",
-
                         fontWeight =
                             FontWeight.Bold,
-
                         fontSize =
                             18.sp,
-
                         modifier =
                             Modifier.padding(
-
                                 start = 20.dp,
                                 top = 16.dp,
                                 bottom = 8.dp
-
                             )
-
                     )
 
                     OutlinedTextField(
-
                         value =
                             ingredientes,
-
                         onValueChange = {
-
                             ingredientes = it
-
                         },
 
                         label = {
-
                             Text(
                                 "Ingredientes"
                             )
-
                         },
 
                         modifier =
@@ -408,39 +375,28 @@ fun AddRecipeScreen() {
 
                         shape =
                             RoundedCornerShape(20.dp)
-
                     )
 
                     Text(
 
                         "Modo de Preparo",
-
                         fontWeight =
                             FontWeight.Bold,
-
                         fontSize =
                             18.sp,
-
                         modifier =
                             Modifier.padding(
-
                                 start = 20.dp,
                                 top = 16.dp,
                                 bottom = 8.dp
-
                             )
-
                     )
 
                     OutlinedTextField(
-
                         value =
                             preparo,
-
                         onValueChange = {
-
                             preparo = it
-
                         },
 
                         label = {
@@ -448,7 +404,6 @@ fun AddRecipeScreen() {
                             Text(
                                 "Modo de preparo"
                             )
-
                         },
 
                         modifier =
@@ -464,9 +419,7 @@ fun AddRecipeScreen() {
                             RoundedCornerShape(20.dp)
 
                     )
-
                 }
-
             }
 
             Spacer(
@@ -607,19 +560,13 @@ fun AddRecipeScreen() {
 
                             fontSize =
                                 14.sp
-
                         )
-
                     }
-
                 }
-
             }
 
             Button(
-
                 onClick = {},
-
                 modifier =
                     Modifier
                         .fillMaxWidth()
@@ -630,71 +577,50 @@ fun AddRecipeScreen() {
 
                 shape =
                     RoundedCornerShape(50.dp),
-
                 colors =
                     ButtonDefaults.buttonColors(
 
                         containerColor =
                             Color(0xFFFF8A00)
-
                     )
-
             ){
 
                 Text(
-
                     "Publicar Receita",
-
                     fontSize =
                         18.sp,
-
                     fontWeight =
                         FontWeight.Bold
-
                 )
-
             }
 
             Spacer(
                 Modifier.height(120.dp)
             )
-
         }
-
     }
-
 }
 
 @Composable
 fun CampoTexto(
-
     titulo:String,
-
     valor:String,
-
     onValor:(String)->Unit
-
 ){
 
     OutlinedTextField(
-
         value =
             valor,
-
         onValueChange =
             onValor,
-
         label = {
-
             Text(
                 titulo
             )
-
         },
 
         shape =
             RoundedCornerShape(20.dp),
-
         modifier =
             Modifier
                 .fillMaxWidth()
@@ -702,7 +628,5 @@ fun CampoTexto(
                     horizontal = 20.dp,
                     vertical = 8.dp
                 )
-
     )
-
 }
